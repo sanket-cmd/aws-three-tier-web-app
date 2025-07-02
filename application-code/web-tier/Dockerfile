@@ -11,10 +11,10 @@ RUN  npm run build
 FROM nginx:stable-alpine
 
 # Remove default config
-RUN rm /etc/nginx/nginx.conf
+
 
 # copy our custom config
-COPY nginx.conf /etc/nginx
+
 
 # copy build output to NGINX web root
 COPY --from=builder /app/build /usr/share/nginx/html
