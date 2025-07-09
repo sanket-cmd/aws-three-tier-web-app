@@ -4,7 +4,7 @@ os: linux
 files:
   - source: application-code/web-tier/build
     destination: /var/www/react-app
-  - source: application-code/backend-tier
+  - source: application-code/app-tier
     destination: /var/www/backend-app
   - source: application-code/nginx/custom-nginx.conf
     destination: /etc/nginx/sites-available/react-backend
