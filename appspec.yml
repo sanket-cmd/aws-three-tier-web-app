@@ -3,22 +3,27 @@ os: linux
 
 files:
   - source: application-code/web-tier/build
-    destination: /var/www/react-app
+    destination: /var/www/html
   - source: application-code/app-tier
-    destination: /var/www/backend-app
-  - source: application-code/nginx/custom-nginx.conf
-    destination: /etc/nginx/sites-available/react-backend
+    destination: /home/ubuntu/app
 
 hooks:
   BeforeInstall:
     - location: scripts/before_install.sh
       timeout: 300
       runas: ubuntu
+
   AfterInstall:
     - location: scripts/after_install.sh
       timeout: 300
       runas: ubuntu
+
   ApplicationStart:
     - location: scripts/start_server.sh
+      timeout: 300
+      runas: ubuntu
+
+  ApplicationStop:
+    - location: scripts/stop_server.sh
       timeout: 300
       runas: ubuntu
